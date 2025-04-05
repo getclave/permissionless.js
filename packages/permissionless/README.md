@@ -1,13 +1,13 @@
-<p align="center"><a href="https://docs.pimlico/permissionless"><img width="1000" title="Permissionless" src='https://raw.githubusercontent.com/pimlicolabs/permissionless.js/main/assets/banner.png' /></a></p>
+<p align="center"><a href="https://getclave.com"><img width="1000" src='https://i.imgur.com/utPOhmS.png'/></a></p>
 
 # permissionless.js
-
-![Node Version](https://img.shields.io/badge/node-20.x-green)
 
 permissionless.js is a TypeScript library built on top of
 [viem](https://viem.sh) for deploying and managing
 [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) smart accounts, interacting
 with bundlers and paymasters, and leveraging custom signers.
+
+This package is the for of permissionless.js, making it compatible with React Native (Expo V52).
 
 ## Features
 
@@ -71,7 +71,7 @@ const account = toSimpleSmartAccount<entryPointVersion>({
 // Create the required clients.
 const bundlerClient = createSmartAccountClient({
   account,
-  paymaster: 
+  paymaster:
   chain: sepolia,
   bundlerTransport: http(
     `https://api.pimlico.io/v2/sepolia/rpc?apikey=${pimlicoApiKey}`,
@@ -98,7 +98,3 @@ bun run build
 ## License
 
 Distributed under an MIT License. See [LICENSE](./LICENSE) for more information.
-
-## Contact
-
-Feel free to ask any questions in our [Telegram group](https://t.me/pimlicoHQ)
