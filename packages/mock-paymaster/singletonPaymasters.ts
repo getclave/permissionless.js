@@ -27,9 +27,9 @@ import { foundry } from "viem/chains"
 import {
     SINGLETON_PAYMASTER_V06_ABI,
     SINGLETON_PAYMASTER_V07_ABI
-} from "./helpers/abi.js"
-import { getPublicClient } from "./helpers/utils.js"
-import type { PaymasterMode } from "./helpers/utils.js"
+} from "./helpers/abi"
+import { getPublicClient } from "./helpers/utils"
+import type { PaymasterMode } from "./helpers/utils"
 
 const DETERMINISTIC_DEPLOYER = "0x4e59b44847b379578588920ca78fbf26c0b4956c"
 

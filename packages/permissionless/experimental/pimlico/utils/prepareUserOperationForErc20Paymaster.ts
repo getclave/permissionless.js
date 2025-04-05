@@ -26,8 +26,8 @@ import {
 import { getChainId as getChainId_ } from "viem/actions"
 import { readContract } from "viem/actions"
 import { getAction, parseAccount } from "viem/utils"
-import { getTokenQuotes } from "../../../actions/pimlico.js"
-import { erc20BalanceOverride } from "../../../utils/erc20BalanceOverride.js"
+import { getTokenQuotes } from "../../../actions/pimlico"
+import { erc20BalanceOverride } from "../../../utils/erc20BalanceOverride"
 
 const MAINNET_USDT_ADDRESS = getAddress(
     "0xdAC17F958D2ee523a2206206994597C13D831ec7"

@@ -4,20 +4,24 @@ import { defineInstance } from "prool"
 import { http, createPublicClient } from "viem"
 import { createBundlerClient } from "viem/account-abstraction"
 import { foundry } from "viem/chains"
-import { deployErc20Token } from "./helpers/erc20-utils.js"
-import { getAnvilWalletClient } from "./helpers/utils.js"
-import { createRpcHandler } from "./relay.js"
+import { deployErc20Token } from "./helpers/erc20-utils"
+import { getAnvilWalletClient } from "./helpers/utils"
+import { createRpcHandler } from "./relay"
 import {
     SingletonPaymasterV06,
     SingletonPaymasterV07
-} from "./singletonPaymasters.js"
+} from "./singletonPaymasters"
 
 export const paymaster = defineInstance(
     ({
         anvilRpc,
         port: _port,
         altoRpc
-    }: { anvilRpc: string; port: number; altoRpc: string }) => {
+    }: {
+        anvilRpc: string
+        port: number
+        altoRpc: string
+    }) => {
         const app = Fastify({})
 
         return {

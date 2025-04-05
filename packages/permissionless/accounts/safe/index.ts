@@ -4,9 +4,9 @@ import {
     type ToSafeSmartAccountParameters,
     type ToSafeSmartAccountReturnType,
     toSafeSmartAccount
-} from "./toSafeSmartAccount.js"
+} from "./toSafeSmartAccount"
 
-import { signUserOperation } from "./signUserOperation.js"
+import { signUserOperation } from "./signUserOperation"
 
 const SafeSmartAccount = {
     toSafeSmartAccount,

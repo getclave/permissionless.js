@@ -1,7 +1,7 @@
 import { Base64 } from "ox"
 import type { Account, Chain, Client, Transport } from "viem"
 import type { CreateWebAuthnCredentialParameters } from "viem/account-abstraction"
-import type { PasskeyServerRpcSchema } from "../../types/passkeyServer.js"
+import type { PasskeyServerRpcSchema } from "../../types/passkeyServer"
 
 const validateAttestation = (attestation: unknown): boolean => {
     return (

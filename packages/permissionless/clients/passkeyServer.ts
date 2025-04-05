@@ -8,11 +8,11 @@ import type {
     Transport
 } from "viem"
 import { createClient } from "viem"
-import type { PasskeyServerRpcSchema } from "../types/passkeyServer.js"
+import type { PasskeyServerRpcSchema } from "../types/passkeyServer"
 import {
     type PasskeyServerActions,
     passkeyServerActions
-} from "./decorators/passkeyServer.js"
+} from "./decorators/passkeyServer"
 
 export type PasskeyServerClient<
     rpcSchema extends RpcSchema | undefined = undefined

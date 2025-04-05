@@ -2,19 +2,19 @@ import {
     type StartRegistrationParameters,
     type StartRegistrationReturnType,
     startRegistration
-} from "./passkeyServer/startRegistration.js"
+} from "./passkeyServer/startRegistration"
 
 import {
     type VerifyRegistrationParameters,
     type VerifyRegistrationReturnType,
     verifyRegistration
-} from "./passkeyServer/verifyRegistration.js"
+} from "./passkeyServer/verifyRegistration"
 
 import {
     type GetCredentialsParameters,
     type GetCredentialsReturnType,
     getCredentials
-} from "./passkeyServer/getCredentials.js"
+} from "./passkeyServer/getCredentials"
 
 export {
     type StartRegistrationParameters,

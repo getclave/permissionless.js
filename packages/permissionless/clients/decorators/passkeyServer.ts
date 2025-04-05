@@ -3,18 +3,18 @@ import {
     type GetCredentialsParameters,
     type GetCredentialsReturnType,
     getCredentials
-} from "../../actions/passkeyServer/getCredentials.js"
+} from "../../actions/passkeyServer/getCredentials"
 import {
     type StartRegistrationParameters,
     type StartRegistrationReturnType,
     startRegistration
-} from "../../actions/passkeyServer/startRegistration.js"
+} from "../../actions/passkeyServer/startRegistration"
 import {
     type VerifyRegistrationParameters,
     type VerifyRegistrationReturnType,
     verifyRegistration
-} from "../../actions/passkeyServer/verifyRegistration.js"
-import type { PasskeyServerRpcSchema } from "../../types/passkeyServer.js"
+} from "../../actions/passkeyServer/verifyRegistration"
+import type { PasskeyServerRpcSchema } from "../../types/passkeyServer"
 
 export type PasskeyServerActions = {
     startRegistration: (

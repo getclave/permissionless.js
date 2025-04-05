@@ -1,8 +1,8 @@
 import { type Hex, decodeFunctionData } from "viem"
-import { decode7579Calls } from "../../../utils/decode7579Calls.js"
-import { KernelExecuteAbi } from "../abi/KernelAccountAbi.js"
-import type { KernelVersion } from "../toKernelSmartAccount.js"
-import { isKernelV2 } from "./isKernelV2.js"
+import { decode7579Calls } from "../../../utils/decode7579Calls"
+import { KernelExecuteAbi } from "../abi/KernelAccountAbi"
+import type { KernelVersion } from "../toKernelSmartAccount"
+import { isKernelV2 } from "./isKernelV2"
 
 export const decodeCallData = ({
     kernelVersion,

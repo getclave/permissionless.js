@@ -15,15 +15,15 @@ import {
     encodePacked
 } from "viem"
 import type { UserOperation } from "viem/account-abstraction"
-import { toOwner } from "../../utils/index.js"
-import type { EthereumProvider } from "../../utils/toOwner.js"
+import { toOwner } from "../../utils/index"
+import type { EthereumProvider } from "../../utils/toOwner"
 import {
     EIP712_SAFE_OPERATION_TYPE_V06,
     EIP712_SAFE_OPERATION_TYPE_V07,
     type SafeVersion,
     getDefaultAddresses,
     getPaymasterAndData
-} from "./toSafeSmartAccount.js"
+} from "./toSafeSmartAccount"
 
 export async function signUserOperation(
     parameters: UnionPartialBy<UserOperation, "sender"> & {

@@ -11,8 +11,8 @@ import {
 } from "viem"
 import { mnemonicToAccount } from "viem/accounts"
 import { foundry } from "viem/chains"
-import { ERC20_ADDRESS } from "./erc20-utils.js"
-import { RpcError, ValidationErrors } from "./schema.js"
+import { ERC20_ADDRESS } from "./erc20-utils"
+import { RpcError, ValidationErrors } from "./schema"
 
 /// Returns the bigger of two BigInts.
 export const maxBigInt = (a: bigint, b: bigint) => {
@@ -41,11 +41,10 @@ export const getPublicClient = (
 export const getAnvilWalletClient = ({
     addressIndex,
     anvilRpc
-}: { addressIndex: number; anvilRpc: string }): WalletClient<
-    Transport,
-    Chain,
-    Account
-> => {
+}: {
+    addressIndex: number
+    anvilRpc: string
+}): WalletClient<Transport, Chain, Account> => {
     return createWalletClient({
         account: mnemonicToAccount(
             "test test test test test test test test test test test junk",

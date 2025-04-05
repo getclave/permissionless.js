@@ -1,7 +1,7 @@
 import { Base64 } from "ox"
 import type { Account, Chain, Client, Hex, Transport } from "viem"
 import type { CreateWebAuthnCredentialReturnType } from "viem/account-abstraction"
-import type { PasskeyServerRpcSchema } from "../../types/passkeyServer.js"
+import type { PasskeyServerRpcSchema } from "../../types/passkeyServer"
 
 export type VerifyRegistrationParameters = {
     credential: CreateWebAuthnCredentialReturnType

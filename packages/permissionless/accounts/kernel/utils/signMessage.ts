@@ -9,11 +9,8 @@ import {
 } from "viem"
 import type { WebAuthnAccount } from "viem/account-abstraction"
 import { signMessage as _signMessage } from "viem/actions"
-import { isWebAuthnAccount } from "./isWebAuthnAccount.js"
-import {
-    type WrapMessageHashParams,
-    wrapMessageHash
-} from "./wrapMessageHash.js"
+import { isWebAuthnAccount } from "./isWebAuthnAccount"
+import { type WrapMessageHashParams, wrapMessageHash } from "./wrapMessageHash"
 
 export async function signMessage({
     message,

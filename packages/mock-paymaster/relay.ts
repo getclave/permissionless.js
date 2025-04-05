@@ -14,7 +14,7 @@ import {
     entryPoint07Address
 } from "viem/account-abstraction"
 import { fromZodError } from "zod-validation-error"
-import { ERC20_ADDRESS } from "./helpers/erc20-utils.js"
+import { ERC20_ADDRESS } from "./helpers/erc20-utils"
 import {
     InternalBundlerError,
     type JsonRpcSchema,
@@ -25,17 +25,17 @@ import {
     pmGetPaymasterData,
     pmGetPaymasterStubDataParamsSchema,
     pmSponsorUserOperationParamsSchema
-} from "./helpers/schema.js"
+} from "./helpers/schema"
 import {
     type PaymasterMode,
     isTokenSupported,
     maxBigInt
-} from "./helpers/utils.js"
+} from "./helpers/utils"
 import {
     type SingletonPaymasterV06,
     type SingletonPaymasterV07,
     getDummyPaymasterData
-} from "./singletonPaymasters.js"
+} from "./singletonPaymasters"
 
 const handleMethodV06 = async (
     userOperation: UserOperation<"0.6">,

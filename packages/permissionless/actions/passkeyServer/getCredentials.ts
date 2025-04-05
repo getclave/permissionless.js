@@ -1,5 +1,5 @@
 import type { Account, Chain, Client, Hex, Transport } from "viem"
-import type { PasskeyServerRpcSchema } from "../../types/passkeyServer.js"
+import type { PasskeyServerRpcSchema } from "../../types/passkeyServer"
 
 export type GetCredentialsParameters = {
     context?: Record<string, unknown>

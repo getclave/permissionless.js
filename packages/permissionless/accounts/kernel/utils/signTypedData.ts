@@ -7,12 +7,9 @@ import {
     validateTypedData
 } from "viem"
 import type { WebAuthnAccount } from "viem/account-abstraction"
-import { isWebAuthnAccount } from "./isWebAuthnAccount.js"
-import { signMessage } from "./signMessage.js"
-import {
-    type WrapMessageHashParams,
-    wrapMessageHash
-} from "./wrapMessageHash.js"
+import { isWebAuthnAccount } from "./isWebAuthnAccount"
+import { signMessage } from "./signMessage"
+import { type WrapMessageHashParams, wrapMessageHash } from "./wrapMessageHash"
 
 export async function signTypedData(
     parameters: TypedDataDefinition &

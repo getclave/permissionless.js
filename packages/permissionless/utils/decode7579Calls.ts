@@ -10,7 +10,7 @@ import {
 import type {
     CallType,
     ExecutionMode
-} from "../actions/erc7579/supportsExecutionMode.js"
+} from "../actions/erc7579/supportsExecutionMode"
 
 export type DecodeCallDataReturnType = {
     mode: ExecutionMode<CallType>

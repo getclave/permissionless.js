@@ -32,28 +32,25 @@ import {
 } from "viem/account-abstraction"
 import { signMessage as _signMessage, getChainId } from "viem/actions"
 import { getAction } from "viem/utils"
-import { getAccountNonce } from "../../actions/public/getAccountNonce.js"
-import { getSenderAddress } from "../../actions/public/getSenderAddress.js"
-import { type EthereumProvider, toOwner } from "../../utils/toOwner.js"
-import { KernelInitAbi } from "./abi/KernelAccountAbi.js"
-import {
-    KernelV3InitAbi,
-    KernelV3_1AccountAbi
-} from "./abi/KernelV3AccountAbi.js"
-import { KernelV3FactoryAbi } from "./abi/KernelV3FactoryAbi.js"
-import { KernelV3MetaFactoryDeployWithFactoryAbi } from "./abi/KernelV3MetaFactoryAbi.js"
+import { getAccountNonce } from "../../actions/public/getAccountNonce"
+import { getSenderAddress } from "../../actions/public/getSenderAddress"
+import { type EthereumProvider, toOwner } from "../../utils/toOwner"
+import { KernelInitAbi } from "./abi/KernelAccountAbi"
+import { KernelV3InitAbi, KernelV3_1AccountAbi } from "./abi/KernelV3AccountAbi"
+import { KernelV3FactoryAbi } from "./abi/KernelV3FactoryAbi"
+import { KernelV3MetaFactoryDeployWithFactoryAbi } from "./abi/KernelV3MetaFactoryAbi"
 import {
     DUMMY_ECDSA_SIGNATURE,
     ROOT_MODE_KERNEL_V2,
     VALIDATOR_TYPE
-} from "./constants.js"
-import { decodeCallData } from "./utils/decodeCallData.js"
-import { encodeCallData } from "./utils/encodeCallData.js"
-import { getNonceKeyWithEncoding } from "./utils/getNonceKey.js"
-import { isKernelV2 } from "./utils/isKernelV2.js"
-import { isWebAuthnAccount } from "./utils/isWebAuthnAccount.js"
-import { signMessage } from "./utils/signMessage.js"
-import { signTypedData } from "./utils/signTypedData.js"
+} from "./constants"
+import { decodeCallData } from "./utils/decodeCallData"
+import { encodeCallData } from "./utils/encodeCallData"
+import { getNonceKeyWithEncoding } from "./utils/getNonceKey"
+import { isKernelV2 } from "./utils/isKernelV2"
+import { isWebAuthnAccount } from "./utils/isWebAuthnAccount"
+import { signMessage } from "./utils/signMessage"
+import { signTypedData } from "./utils/signTypedData"
 
 /**
  * The account creation ABI for a kernel smart account (from the KernelFactory)
