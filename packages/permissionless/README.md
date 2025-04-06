@@ -7,7 +7,7 @@ permissionless.js is a TypeScript library built on top of
 [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) smart accounts, interacting
 with bundlers and paymasters, and leveraging custom signers.
 
-This package is the for of permissionless.js, making it compatible with React Native (Expo V52).
+This package is the fork of permissionless.js, making it compatible with React Native (Expo V52).
 
 ## Features
 

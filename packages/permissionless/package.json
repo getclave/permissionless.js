@@ -1,6 +1,6 @@
 {
     "name": "@getclave/permissionless",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "author": "Pimlico",
     "homepage": "https://docs.pimlico.io/permissionless",
     "main": "./_cjs/index.js",
