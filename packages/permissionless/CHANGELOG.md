@@ -1,5 +1,53 @@
 # permissionless
 
+## 0.2.47
+
+### Patch Changes
+
+- ad6fc0eadc2c7ebb93b097ced501922947b71984: Fixed threshold for safe
+
+## 0.2.46
+
+### Patch Changes
+
+- bdf11dfb49a872d9a89580b7f8607fbcfcc5a238: Added SimpleAccount 0.8
+
+## 0.2.45
+
+### Patch Changes
+
+- 28c248502253929c5542876f5f8bf21f1c4c1e69: Forward all args to sendUserOperation action
+
+## 0.2.44
+
+### Patch Changes
+
+- 576a63439dd2b72e21edf480be7fd4458e08c4ba: Added validForSeconds field to pm_sponsorUserOperation, removed deprecated label on pm_sponsorUserOperation
+
+## 0.2.43
+
+### Patch Changes
+
+- e050d86574791b210d9de183e85281bbdfe4e498: Added support for kernel 0.3.2 & 0.3.3
+
+## 0.2.42
+
+### Patch Changes
+
+- d9ec1ec588781684d1cd2d6aeec1c9dc73ac4aa8: Added return of userName for passkeys verification actions
+
+## 0.2.41
+
+### Patch Changes
+
+- 3e413ee36e89b8c055d504403776c9868cb598e4: Added optional value to useMetaFactory
+
+## 0.2.40
+
+### Patch Changes
+
+- 9448c6fc5275f4be21916cb9f91dc067452baa6b: Added passkeys authentication flow
+
 ## 0.2.39
 
 ### Patch Changes

@@ -7,10 +7,7 @@ import { foundry } from "viem/chains"
 import { deployErc20Token } from "./helpers/erc20-utils"
 import { getAnvilWalletClient } from "./helpers/utils"
 import { createRpcHandler } from "./relay"
-import {
-    SingletonPaymasterV06,
-    SingletonPaymasterV07
-} from "./singletonPaymasters"
+import { deployPaymasters } from "./singletonPaymasters"
 
 export const paymaster = defineInstance(
     ({
@@ -43,17 +40,7 @@ export const paymaster = defineInstance(
                     transport: http(altoRpc)
                 })
 
-                const singletonPaymasterV07 = new SingletonPaymasterV07(
-                    walletClient,
-                    anvilRpc
-                )
-                const singletonPaymasterV06 = new SingletonPaymasterV06(
-                    walletClient,
-                    anvilRpc
-                )
-
-                await singletonPaymasterV06.setup()
-                await singletonPaymasterV07.setup()
+                await deployPaymasters({ walletClient, publicClient })
                 await deployErc20Token(walletClient, publicClient)
 
                 app.register(cors, {
@@ -61,11 +48,11 @@ export const paymaster = defineInstance(
                     methods: ["POST", "GET", "OPTIONS"]
                 })
 
-                const rpcHandler = createRpcHandler(
+                const rpcHandler = createRpcHandler({
                     bundler,
-                    singletonPaymasterV07,
-                    singletonPaymasterV06
-                )
+                    publicClient,
+                    paymasterSigner: walletClient
+                })
                 app.post("/", {}, rpcHandler)
 
                 app.get("/ping", async (_request, reply) => {

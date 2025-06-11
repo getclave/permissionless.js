@@ -16,9 +16,9 @@ import {
     BICONOMY_ECDSA_OWNERSHIP_REGISTRY_MODULE_CREATECALL,
     BICONOMY_FACTORY_CREATECALL,
     BICONOMY_SINGLETON_FACTORY_BYTECODE,
-    ENTRY_POINT_SIMULATIONS_CREATECALL,
     ENTRY_POINT_V06_CREATECALL,
     ENTRY_POINT_V07_CREATECALL,
+    ENTRY_POINT_V08_CREATECALL,
     ERC_7579_TEST_MODULE_CREATECALL,
     ETHERSPOT_BOOTSTRAP_CREATECALL,
     ETHERSPOT_IMPLEMENTATION,
@@ -38,6 +38,10 @@ import {
     KERNEL_V07_V3_1_ECDSA_VALIDATOR_V3_CREATECALL,
     KERNEL_V07_V3_1_FACTORY_CREATECALL,
     KERNEL_V07_V3_1_WEB_AUTHN_VALIDATOR_CREATECALL,
+    KERNEL_V07_V3_2_ACCOUNT_V3_LOGIC_CREATECALL,
+    KERNEL_V07_V3_2_FACTORY_CREATECALL,
+    KERNEL_V07_V3_3_ACCOUNT_V3_LOGIC_CREATECALL,
+    KERNEL_V07_V3_3_FACTORY_CREATECALL,
     LIGHT_ACCOUNT_FACTORY_V110_CREATECALL,
     LIGHT_ACCOUNT_FACTORY_V200_CREATECALL,
     NEXUS_ACCOUNT_BOOTSTRAPPER_CREATECALL,
@@ -63,6 +67,7 @@ import {
     SAFE_V07_MODULE_SETUP_CREATECALL,
     SIMPLE_ACCOUNT_FACTORY_V06_CREATECALL,
     SIMPLE_ACCOUNT_FACTORY_V07_CREATECALL,
+    SIMPLE_ACCOUNT_FACTORY_V08_CREATECALL,
     THIRDWEB_FACTORY_V06_CREATECALL,
     THIRDWEB_FACTORY_V07_CREATECALL,
     TRUST_ACCOUNT_FACET_CREATE_CALL,
@@ -72,14 +77,12 @@ import {
     TRUST_FACTORY_V06_CREATECALL,
     TRUST_SECP256K1_VERIFICATION_FACET_CREATECALL,
     TRUST_TOKEN_RECEIVER_FACET_CREATE_CALL
-} from "./constants"
+} from "./constants/index"
 
 const DETERMINISTIC_DEPLOYER = "0x4e59b44847b379578588920ca78fbf26c0b4956c"
 const SAFE_SINGLETON_FACTORY = "0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7"
 const BICONOMY_SINGLETON_FACTORY = "0x988C135a1049Ce61730724afD342fb7C56CD2776"
 const SAFE_7579_REGISTRY = "0x000000000069E2a187AEFFb852bF3cCdC95151B2"
-export const ENTRY_POINT_SIMULATIONS_ADDRESS =
-    "0xe1b9bcD4DbfAE61585691bdB9A100fbaAF6C8dB0"
 
 const verifyDeployed = async (client: PublicClient, addresses: Address[]) => {
     for (const address of addresses) {
@@ -124,6 +127,18 @@ export const setupContracts = async (rpc: string) => {
     await Promise.all([
         walletClient.sendTransaction({
             to: DETERMINISTIC_DEPLOYER,
+            data: ENTRY_POINT_V08_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
+            data: SIMPLE_ACCOUNT_FACTORY_V08_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
             data: ENTRY_POINT_V07_CREATECALL,
             gas: 15_000_000n,
             nonce: nonce++
@@ -131,12 +146,6 @@ export const setupContracts = async (rpc: string) => {
         walletClient.sendTransaction({
             to: DETERMINISTIC_DEPLOYER,
             data: SIMPLE_ACCOUNT_FACTORY_V07_CREATECALL,
-            gas: 15_000_000n,
-            nonce: nonce++
-        }),
-        walletClient.sendTransaction({
-            to: DETERMINISTIC_DEPLOYER,
-            data: ENTRY_POINT_SIMULATIONS_CREATECALL,
             gas: 15_000_000n,
             nonce: nonce++
         }),
@@ -263,6 +272,30 @@ export const setupContracts = async (rpc: string) => {
         walletClient.sendTransaction({
             to: DETERMINISTIC_DEPLOYER,
             data: KERNEL_V07_V3_1_WEB_AUTHN_VALIDATOR_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
+            data: KERNEL_V07_V3_2_ACCOUNT_V3_LOGIC_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
+            data: KERNEL_V07_V3_2_FACTORY_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
+            data: KERNEL_V07_V3_3_ACCOUNT_V3_LOGIC_CREATECALL,
+            gas: 15_000_000n,
+            nonce: nonce++
+        }),
+        walletClient.sendTransaction({
+            to: DETERMINISTIC_DEPLOYER,
+            data: KERNEL_V07_V3_3_FACTORY_CREATECALL,
             gas: 15_000_000n,
             nonce: nonce++
         }),
@@ -587,6 +620,27 @@ export const setupContracts = async (rpc: string) => {
         data: "0x6e7dbabb000000000000000000000000aac5D4240AF87249B3f71BC8E4A2cae074A3E4190000000000000000000000000000000000000000000000000000000000000001"
     })
 
+    // register 0x7a1dBAB750f12a90EB1B60D2Ae3aD17D4D81EfFe
+    await sendTransaction(walletClient, {
+        account: kernelFactoryOwner,
+        to: "0xd703aaE79538628d27099B8c4f621bE4CCd142d5" /* kernel factory v0.7 */,
+        data: "0x6e7dbabb0000000000000000000000007a1dBAB750f12a90EB1B60D2Ae3aD17D4D81EfFe0000000000000000000000000000000000000000000000000000000000000001"
+    })
+
+    // register 0xE30c76Dc9eCF1c19F6Fec070674E1b4eFfE069FA
+    await sendTransaction(walletClient, {
+        account: kernelFactoryOwner,
+        to: "0xd703aaE79538628d27099B8c4f621bE4CCd142d5" /* kernel factory v0.7 */,
+        data: "0x6e7dbabb000000000000000000000000E30c76Dc9eCF1c19F6Fec070674E1b4eFfE069FA0000000000000000000000000000000000000000000000000000000000000001"
+    })
+
+    // register 0x2577507b78c2008Ff367261CB6285d44ba5eF2E9
+    await sendTransaction(walletClient, {
+        account: kernelFactoryOwner,
+        to: "0xd703aaE79538628d27099B8c4f621bE4CCd142d5" /* kernel factory v0.7 */,
+        data: "0x6e7dbabb0000000000000000000000002577507b78c2008Ff367261CB6285d44ba5eF2E90000000000000000000000000000000000000000000000000000000000000001"
+    })
+
     await sendTransaction(walletClient, {
         account: kernelFactoryOwner,
         to: "0xd703aaE79538628d27099B8c4f621bE4CCd142d5" /* kernel factory v0.7 */,
@@ -621,11 +675,12 @@ export const setupContracts = async (rpc: string) => {
 
     await verifyDeployed(client, [
         "0x4e59b44847b379578588920ca78fbf26c0b4956c", // Determinstic deployer
+        "0x4337084d9e255ff0702461cf8895ce9e3b5ff108", // EntryPoint 0.8
+        "0x13E9ed32155810FDbd067D4522C492D6f68E5944", // Simple Account Factory 0.8
         "0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7", // Safe Singleton Factory
         "0x988C135a1049Ce61730724afD342fb7C56CD2776", // Biconomy Singleton Factory
-        "0x0000000071727De22E5E9d8BAf0edAc6f37da032", // EntryPoint v0.7
-        "0x91E60e0613810449d098b0b5Ec8b51A0FE8c8985", // Simple Account Factory V0.7
-        // ENTRY_POINT_SIMULATIONS_ADDRESS, // EntryPoint Simulations (Needed for v0.7)
+        "0x0000000071727De22E5E9d8BAf0edAc6f37da032", // EntryPoint 0.7
+        "0x91E60e0613810449d098b0b5Ec8b51A0FE8c8985", // Simple Account Factory 0.7
         "0x2dd68b007B46fBe91B9A7c3EDa5A7a1063cB5b47", // Safe V0.7 Module Setup
         "0x75cf11467937ce3F2f357CE24ffc3DBF8fD5c226", // Safe V0.7 4337 Module
         "0x8EcD4ec46D4D2a6B64fE960B3D64e8B94B2234eb", // Safe V0.6 Module Setup
@@ -637,26 +692,30 @@ export const setupContracts = async (rpc: string) => {
         "0x7579EE8307284F293B1927136486880611F20002", // Safe 7579 module
         "0x7579011aB74c46090561ea277Ba79D510c6C00ff", // Safe 7579 launchpad
         "0x000000000069E2a187AEFFb852bF3cCdC95151B2", // Safe 7579 Registry
-        "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789", // EntryPoint V0.6
-        "0x9406Cc6185a346906296840746125a0E44976454", // Simple Account Factory V0.6
+        "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789", // EntryPoint 0.6
+        "0x9406Cc6185a346906296840746125a0E44976454", // Simple Account Factory 0.6
         "0x0000001c5b32F37F5beA87BDD5374eB2aC54eA8e", // Biconomy ECDSA Ownership Registry Module
         "0x0000002512019Dafb59528B82CB92D3c5D2423ac", // Biconomy Account Logic V0.2
         "0x000000a56Aaca3e9a4C479ea6b6CD0DbcB6634F5", // Biconomy Factory Address
         "0x0bBa6d96BD616BedC6BFaa341742FD43c60b83C1", // Biconomy Default Fallback Handler
         "0xf048AD83CB2dfd6037A43902a2A5Be04e53cd2Eb", // Kernel 0.2.1 Account Logic
-        "0xd9AB5096a832b9ce79914329DAEE236f8Eea0390", // Kernel v0.2.2 ECDSA Valdiator
+        "0xd9AB5096a832b9ce79914329DAEE236f8Eea0390", // Kernel v0.2.2 ECDSA Validator
         "0x0DA6a956B9488eD4dd761E59f52FDc6c8068E6B5", // Kernel v0.2.2 Account Logic
         "0xD3F582F6B4814E989Ee8E96bc3175320B5A540ab", // Kernel v0.2.3 Account Logic
         "0x5de4839a76cf55d0c90e2061ef4386d962E15ae3", // Kernel v0.2.2 Factory
         "0xd3082872F8B06073A021b4602e022d5A070d7cfC", // Kernel v0.2.4 Factory
-        "0x8104e3Ad430EA6d354d013A6789fDFc71E671c43", // Kernel v0.3.0 ECDSA Valdiator
+        "0x8104e3Ad430EA6d354d013A6789fDFc71E671c43", // Kernel v0.3.0 ECDSA Validator
         "0x94F097E1ebEB4ecA3AAE54cabb08905B239A7D27", // Kernel v0.3.0 Account Logic
         "0x6723b44Abeec4E71eBE3232BD5B455805baDD22f", // Kernel v0.3.0 Factory
         "0xd703aaE79538628d27099B8c4f621bE4CCd142d5", // Kernel v0.3.0 & v0.3.1 Meta Factory
-        "0x845ADb2C711129d4f3966735eD98a9F09fC4cE57", // Kernel v0.3.1 ECDSA Valdiator
+        "0x845ADb2C711129d4f3966735eD98a9F09fC4cE57", // Kernel v0.3.1 ECDSA Validator
         "0xBAC849bB641841b44E965fB01A4Bf5F074f84b4D", // Kernel v0.3.1 Account Logic
         "0xaac5D4240AF87249B3f71BC8E4A2cae074A3E419", // Kernel v0.3.1 Factory
         "0xbA45a2BFb8De3D24cA9D7F1B551E14dFF5d690Fd", // Kernel v0.3.1 WebAuthn Validator
+        "0xD830D15D3dc0C269F3dBAa0F3e8626d33CFdaBe1", // Kernel v0.3.2 Account Logic
+        "0x7a1dBAB750f12a90EB1B60D2Ae3aD17D4D81EfFe", // Kernel v0.3.2 Factory
+        "0xd6CEDDe84be40893d153Be9d467CD6aD37875b28", // Kernel v0.3.3 Account Logic
+        "0x2577507b78c2008Ff367261CB6285d44ba5eF2E9", // Kernel v0.3.3 Factory
         "0x00004EC70002a32400f8ae005A26081065620D20", // LightAccountFactory v1.1.0
         "0xae8c656ad28F2B59a196AB61815C16A0AE1c3cba", // LightAccount v1.1.0 implementation
         "0x0000000000400CdFef5E2714E63d8040b700BC24", // LightAccountFactory v2.0.0

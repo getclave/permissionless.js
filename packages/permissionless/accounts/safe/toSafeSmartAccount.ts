@@ -5,6 +5,7 @@ import {
     type Chain,
     type Client,
     type Hex,
+    type JsonRpcAccount,
     type LocalAccount,
     type OneOf,
     type SignableMessage,
@@ -747,7 +748,7 @@ const getInitializerCode = async ({
         functionName: "setup",
         args: [
             owners,
-            BigInt(1),
+            threshold,
             multiSendAddress,
             multiSendCallData,
             safe4337ModuleAddress,
@@ -954,7 +955,11 @@ export type ToSafeSmartAccountParameters<
     entryPointVersion extends "0.6" | "0.7",
     TErc7579 extends Address | undefined
 > = {
-    client: Client
+    client: Client<
+        Transport,
+        Chain | undefined,
+        JsonRpcAccount | LocalAccount | undefined
+    >
     owners: (
         | Account
         | WalletClient<Transport, Chain | undefined, Account>
