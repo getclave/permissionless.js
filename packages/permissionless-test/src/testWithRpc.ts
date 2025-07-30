@@ -1,5 +1,5 @@
 import getPort from "get-port"
-import { alto, anvil } from "prool/instances"
+import { anvil } from "prool/instances"
 import {
     entryPoint06Address,
     entryPoint07Address,
@@ -9,6 +9,7 @@ import { foundry } from "viem/chains"
 import { test } from "vitest"
 import { paymaster } from "../../mock-paymaster"
 import { setupContracts } from "../mock-aa-infra/alto"
+import { alto } from "../mock-aa-infra/alto/instance"
 
 export const getInstances = async ({
     anvilPort,

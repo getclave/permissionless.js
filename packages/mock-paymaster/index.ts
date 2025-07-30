@@ -3,40 +3,42 @@ import Fastify from "fastify"
 import { defineInstance } from "prool"
 import { http, createPublicClient } from "viem"
 import { createBundlerClient } from "viem/account-abstraction"
-import { foundry } from "viem/chains"
 import { deployErc20Token } from "./helpers/erc20-utils"
-import { getAnvilWalletClient } from "./helpers/utils"
+import { getAnvilWalletClient, getChain } from "./helpers/utils"
 import { createRpcHandler } from "./relay"
 import { deployPaymasters } from "./singletonPaymasters"
 
 export const paymaster = defineInstance(
     ({
         anvilRpc,
+        altoRpc,
         port: _port,
-        altoRpc
+        host: _host = "localhost"
     }: {
         anvilRpc: string
         port: number
         altoRpc: string
+        host?: string
     }) => {
         const app = Fastify({})
 
         return {
             _internal: {},
-            host: "localhost",
+            host: _host,
             port: _port,
             name: "mock-paymaster",
             start: async ({ port = _port }) => {
-                const walletClient = getAnvilWalletClient({
+                const chain = await getChain(anvilRpc)
+                const walletClient = await getAnvilWalletClient({
                     anvilRpc,
                     addressIndex: 1
                 })
                 const publicClient = createPublicClient({
                     transport: http(anvilRpc),
-                    chain: foundry
+                    chain
                 })
                 const bundler = createBundlerClient({
-                    chain: foundry,
+                    chain,
                     transport: http(altoRpc)
                 })
 
@@ -59,7 +61,7 @@ export const paymaster = defineInstance(
                     return reply.code(200).send({ message: "pong" })
                 })
 
-                await app.listen({ host: "localhost", port })
+                await app.listen({ host: _host, port })
             },
             stop: async () => {
                 app.close()

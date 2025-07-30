@@ -1,5 +1,37 @@
 # permissionless
 
+## 0.2.52
+
+### Patch Changes
+
+- 0d82154a74d4592da9fb014d56567f9ff884fc81: Fixed owners length check for safe multisig
+
+## 0.2.51
+
+### Patch Changes
+
+- 1f3c2d2ff753e91ff11d587bb1758b5d65fea8f9: Fixed multi-sig safe when threshold is not same as owners
+
+## 0.2.50
+
+### Patch Changes
+
+- ba0e2bd161d5ee4bbd975a28f9f36ff520aca8f7: Added estimateErc20PaymasterCost
+
+## 0.2.49
+
+### Patch Changes
+
+- be0db9bf8da4fdd3fd993626991121381d21e9ce: Removed fixed ox version as optional dependency
+
+## 0.2.48
+
+### Patch Changes
+
+- 56fdf93fca1a7e173c1f34352a93bdc102f0563c: Added authorisation support for installModule and installModules
+- 52a3de159521bb98585cad16697fdd871e83b209: Added to7702SimpleSmartAccount
+- 5494e69866df60ee87424a51d6f99c4e76eaa7d6: Added to7702KernelSmartAccount
+
 ## 0.2.47
 
 ### Patch Changes

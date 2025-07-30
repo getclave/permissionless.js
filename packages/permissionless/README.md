@@ -60,21 +60,23 @@ import { sepolia } from "viem/chains";
 import { http } from "viem";
 
 const paymaster = createPaymasterClient({
-  transport: http(`https://api.pimlico.io/v2/sepolia/rpc?apikey=${pimlicoApiKey}`)
-})
+  transport: http(
+    `https://api.pimlico.io/v2/sepolia/rpc?apikey=${pimlicoApiKey}`
+  ),
+});
 
 const account = toSimpleSmartAccount<entryPointVersion>({
   client: getPublicClient(anvilRpc),
-  owner: privateKeyToAccount(generatePrivateKey())
-})
+  owner: privateKeyToAccount(generatePrivateKey()),
+});
 
 // Create the required clients.
 const bundlerClient = createSmartAccountClient({
   account,
-  paymaster:
+  paymaster,
   chain: sepolia,
   bundlerTransport: http(
-    `https://api.pimlico.io/v2/sepolia/rpc?apikey=${pimlicoApiKey}`,
+    `https://api.pimlico.io/v2/sepolia/rpc?apikey=${pimlicoApiKey}`
   ), // Use any bundler url
 });
 
